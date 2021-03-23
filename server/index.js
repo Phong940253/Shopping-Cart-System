@@ -10,6 +10,18 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server" });
 });
 
+app.get("/sign-up", (req, res) => {
+    res.json({ message: "Hello from server" });
+});
+
+app.get("/sign-in", (req, res) => {
+    res.json({ message: "Hello from server" });
+});
+
+app.post("/user", (req, res) => {
+    res.send("Got a user");
+});
+
 app.get("", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
