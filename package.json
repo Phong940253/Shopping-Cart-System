@@ -8,9 +8,14 @@
     "start": "node server/index.js",
     "build": "cd client && npm install && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": "15.x"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "phong",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.6.5"
