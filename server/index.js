@@ -5,8 +5,6 @@ const PORT = process.env.PORT || 3001;
 const BodyParser = require("body-parser");
 const app = express();
 const db = require("./models/index");
-const { request } = require("http");
-const { response } = require("express");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -40,52 +38,88 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
-app.post("/user", async (request, response) => {
+app.post("/user", async (req, res) => {
     try {
-        let user = new db.userModel(request.body);
+        let user = new db.userModel(req.body);
         let result = await user.save();
-        response.send(result);
+        res.send(result);
     } catch (error) {
-        response.status(500).send(error);
+        res.status(500).send(error);
     }
 });
 
-app.get("/user/:id", async (request, response) => {
+app.get("/user/:id", async (req, res) => {
     try {
-        let user = await db.userModel.findById(request.params.id).exec();
-        response.send(user);
+        let user = await db.userModel.findById(req.params.id).exec();
+        res.send(user);
     } catch (error) {
-        response.status(500).send(error);
+        res.status(500).send(error);
     }
 });
 
-app.get("/user/all", async (request, response) => {
+app.put("/user/:id", async (req, res) => {
     try {
-    } catch (error) {
-        response.status(500).send(error);
-    }
-});
-
-app.put("/user/:id", async (request, response) => {
-    try {
-        let user = await db.userModel.findById(request.params.id).exec();
-        user.set(request.body);
+        let user = await db.userModel.findById(req.params.id).exec();
+        user.set(req.body);
         let result = await user.save();
-        response.send(result);
+        res.send(result);
     } catch (error) {
-        response.status(500).send(error);
+        res.status(500).send(error);
     }
 });
 
-app.delete("/user/:id", async (request, response) => {
+app.delete("/user/:id", async (req, res) => {
     try {
         let result = await db.userModel
             .deleteOne({
-                _id: request.params.id,
+                _id: req.params.id,
             })
             .exec();
-        response.send(result);
+        res.send(result);
     } catch (error) {
-        response.status(500).send(error);
+        res.status(500).send(error);
+    }
+});
+
+app.post("/order", async (req, res) => {
+    try {
+        let order = new db.orderModel(req.body);
+        let result = await order.save();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.get("/order/:id", async (req, res) => {
+    try {
+        let order = await db.orderModel.findById(req.params.id).exec();
+        res.send(order);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.put("/order/:id", async (req, res) => {
+    try {
+        let order = await db.orderModel.findById(req.params.id).exec();
+        order.set(req.body);
+        let result = await order.save();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.delete("/order/:id", async (req, res) => {
+    try {
+        let result = await db.orderModel
+            .deleteOne({
+                _id: req.params.id,
+            })
+            .exec();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
     }
 });
