@@ -166,3 +166,46 @@ app.delete("/cart/:id", async (req, res) => {
         res.status(500).send(error);
     }
 });
+
+app.post("/cart-item", async (req, res) => {
+    try {
+        let cartItem = new db.cartItemModel(req.body);
+        let result = await cartItem.save();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.get("/cart-item/:id", async (req, res) => {
+    try {
+        let cartItem = await db.cartItemModel.findById(req.params.id).exec();
+        res.send(cartItem);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.put("/cart-item/:id", async (req, res) => {
+    try {
+        let cartItem = await db.cartItemModel.findById(req.params.id).exec();
+        cartItem.set(req.body);
+        let result = await cartItem.save();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+app.delete("/cart-item/:id", async (req, res) => {
+    try {
+        let result = await db.cartItemModel
+            .deleteOne({
+                _id: req.params.id,
+            })
+            .exec();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
