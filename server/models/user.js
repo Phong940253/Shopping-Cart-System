@@ -1,5 +1,5 @@
 const Mongoose = require("mongoose");
-const userModel = Mongoose.model("user", {
+module.exports.userModel = Mongoose.model("user", {
     firstName: String,
     middleName: String,
     lastName: String,
@@ -13,5 +13,3 @@ const userModel = Mongoose.model("user", {
     intro: String,
     profile: String,
 });
-
-module.exports.userModel = userModel;

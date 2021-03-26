@@ -2,7 +2,7 @@ const Mongoose = require("mongoose");
 const Decimal128 = Mongoose.Decimal128;
 const ObjectId = Mongoose.ObjectId;
 
-const productModel = Mongoose.model("product", {
+module.exports.productModel = Mongoose.model("product", {
     userId: ObjectId,
     title: String,
     metaTitle: String,
@@ -21,4 +21,3 @@ const productModel = Mongoose.model("product", {
     endsAt: Date,
     content: String,
 });
-module.exports.productModel = productModel;

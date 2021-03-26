@@ -1,7 +1,7 @@
 const Mongoose = require("mongoose");
 const Decimal128 = Mongoose.Decimal128;
 const ObjectId = Mongoose.ObjectId;
-const cartItemModel = Mongoose.model("cart_item", {
+module.exports.cartItemModel = Mongoose.model("cart_item", {
     productId: ObjectId,
     cartId: ObjectId,
     sku: String,
@@ -13,4 +13,3 @@ const cartItemModel = Mongoose.model("cart_item", {
     updateAt: Date,
     content: String,
 });
-module.exports.cartItemModel = cartItemModel;

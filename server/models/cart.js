@@ -1,6 +1,6 @@
 const Mongoose = require("mongoose");
 const ObjectId = Mongoose.ObjectId;
-const cartModel = Mongoose.model("cart", {
+module.exports.cartModel = Mongoose.model("cart", {
     userId: ObjectId,
     sessionID: String,
     token: String,
@@ -19,4 +19,3 @@ const cartModel = Mongoose.model("cart", {
     updateAt: Date,
     content: String,
 });
-module.exports.cartModel = cartModel;
