@@ -4,7 +4,21 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const BodyParser = require("body-parser");
 const app = express();
-const modelDB = require("./module/model");
+const db = require("./models/index");
+const { request } = require("http");
+const { response } = require("express");
+db.mongoose
+    .connect(db.url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => {
+        console.log("Connected to the database!");
+    })
+    .catch((err) => {
+        console.log("Cannot connect to the database!", err);
+        process.exit();
+    });
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(BodyParser.json());
@@ -28,7 +42,7 @@ app.listen(PORT, () => {
 
 app.post("/user", async (request, response) => {
     try {
-        let user = new modelDB.userModel(request.body);
+        let user = new db.userModel(request.body);
         let result = await user.save();
         response.send(result);
     } catch (error) {
@@ -38,8 +52,15 @@ app.post("/user", async (request, response) => {
 
 app.get("/user/:id", async (request, response) => {
     try {
-        let user = await modelDB.userModel.findById(request.params.id).exec();
+        let user = await db.userModel.findById(request.params.id).exec();
         response.send(user);
+    } catch (error) {
+        response.status(500).send(error);
+    }
+});
+
+app.get("/user/all", async (request, response) => {
+    try {
     } catch (error) {
         response.status(500).send(error);
     }
@@ -47,7 +68,7 @@ app.get("/user/:id", async (request, response) => {
 
 app.put("/user/:id", async (request, response) => {
     try {
-        let user = await userModel.findById(request.params.id).exec();
+        let user = await db.userModel.findById(request.params.id).exec();
         user.set(request.body);
         let result = await user.save();
         response.send(result);
@@ -58,7 +79,7 @@ app.put("/user/:id", async (request, response) => {
 
 app.delete("/user/:id", async (request, response) => {
     try {
-        let result = await userModel
+        let result = await db.userModel
             .deleteOne({
                 _id: request.params.id,
             })
