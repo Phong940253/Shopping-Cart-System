@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3001;
 const BodyParser = require("body-parser");
 const app = express();
 const db = require("./models/index");
+const user = require("./controllers/user.controller.js");
+const cart = require("./controllers/cart.controller.js");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -39,46 +41,19 @@ app.listen(PORT, () => {
 });
 
 app.post("/user", async (req, res) => {
-    try {
-        let user = new db.userModel(req.body);
-        let result = await user.save();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await user.create(req, res);
 });
 
 app.get("/user/:id", async (req, res) => {
-    try {
-        let user = await db.userModel.findById(req.params.id).exec();
-        res.send(user);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await user.find(req, res);
 });
 
 app.put("/user/:id", async (req, res) => {
-    try {
-        let user = await db.userModel.findById(req.params.id).exec();
-        user.set(req.body);
-        let result = await user.save();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await user.edit(req, res);
 });
 
 app.delete("/user/:id", async (req, res) => {
-    try {
-        let result = await db.userModel
-            .deleteOne({
-                _id: req.params.id,
-            })
-            .exec();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await user.delete(req, res);
 });
 
 app.post("/order", async (req, res) => {
@@ -125,46 +100,19 @@ app.delete("/order/:id", async (req, res) => {
 });
 
 app.post("/cart", async (req, res) => {
-    try {
-        let cart = new db.cartModel(req.body);
-        let result = await cart.save();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await cart.create(req, res);
 });
 
 app.get("/cart/:id", async (req, res) => {
-    try {
-        let cart = await db.cartModel.findById(req.params.id).exec();
-        res.send(cart);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await cart.find(req, res);
 });
 
 app.put("/cart/:id", async (req, res) => {
-    try {
-        let cart = await db.cartModel.findById(req.params.id).exec();
-        cart.set(req.body);
-        let result = await cart.save();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await cart.edit(req, res);
 });
 
 app.delete("/cart/:id", async (req, res) => {
-    try {
-        let result = await db.cartModel
-            .deleteOne({
-                _id: req.params.id,
-            })
-            .exec();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await cart.delete(req, res);
 });
 
 app.post("/cart-item", async (req, res) => {
