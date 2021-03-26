@@ -1,6 +1,14 @@
-const Mongoose = require("mongoose");
-const ObjectId = Mongoose.ObjectId;
-module.exports.productCategory = Mongoose.model("product-category", {
-    productId: ObjectId,
-    categoryId: ObjectId,
-});
+const { model, Schema } = require("mongoose");
+const ObjectId = require("mongoose").ObjectId;
+
+module.exports.productCategorySchema = new Schema(
+    {
+        productId: ObjectId,
+        categoryId: ObjectId,
+    },
+    { timestamps: true }
+);
+module.exports.productCategoryModel = model(
+    "product-category",
+    this.productCategorySchema
+);

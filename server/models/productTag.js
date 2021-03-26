@@ -1,6 +1,12 @@
-const Mongoose = require("mongoose");
-const ObjectId = Mongoose.ObjectId;
-module.exports.productTagModel = Mongoose.model("product-tag", {
-    productId: ObjectId,
-    tagId: ObjectId,
-});
+const { model, Schema } = require("mongoose");
+const ObjectId = require("mongoose").ObjectId;
+
+module.exports.productTagSchema = new Schema(
+    {
+        productId: ObjectId,
+        tagId: ObjectId,
+    },
+    { timestamps: true }
+);
+
+module.exports.productTagModel = model("product-tag", this.productTagSchema);
