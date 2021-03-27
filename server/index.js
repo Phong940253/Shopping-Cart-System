@@ -10,7 +10,8 @@ const cart = require("./controllers/cart.controller.js");
 const order = require("./controllers/order.controller.js");
 const cartItem = require("./controllers/cartItem.controller.js");
 const category = require("./controllers/category.controller.js");
-const product = require("./controllers/product.js");
+const product = require("./controllers/product.controller.js");
+const productCategory = require("./controllers/productCategory.controller.js");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -138,4 +139,20 @@ app.put("/product/:id", async (req, res) => {
 
 app.delete("/product/:id", async (req, res) => {
     await product.delete(req, res);
+});
+
+app.post("/product-category", async (req, res) => {
+    await productCategory.create(req, res);
+});
+
+app.get("/product-category/:id", async (req, res) => {
+    await productCategory.find(req, res);
+});
+
+app.put("/product-category/:id", async (req, res) => {
+    await productCategory.edit(req, res);
+});
+
+app.delete("/product-category/:id", async (req, res) => {
+    await productCategory.delete(req, res);
 });
