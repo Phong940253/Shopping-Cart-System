@@ -9,6 +9,7 @@ const user = require("./controllers/user.controller.js");
 const cart = require("./controllers/cart.controller.js");
 const order = require("./controllers/order.controller.js");
 const cartItem = require("./controllers/cartItem.controller.js");
+const category = require("./controllers/category.controller.js");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -104,4 +105,20 @@ app.put("/cart-item/:id", async (req, res) => {
 
 app.delete("/cart-item/:id", async (req, res) => {
     await cartItem.delete(req, res);
+});
+
+app.post("/category", async (req, res) => {
+    await category.create(req, res);
+});
+
+app.get("/category/:id", async (req, res) => {
+    await category.find(req, res);
+});
+
+app.put("/category/:id", async (req, res) => {
+    await category.edit(req, res);
+});
+
+app.delete("/category/:id", async (req, res) => {
+    await category.delete(req, res);
 });
