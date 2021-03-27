@@ -12,6 +12,11 @@ const cartItem = require("./controllers/cartItem.controller.js");
 const category = require("./controllers/category.controller.js");
 const product = require("./controllers/product.controller.js");
 const productCategory = require("./controllers/productCategory.controller.js");
+const productMeta = require("./controllers/productMeta.controller.js");
+const productReview = require("./controllers/productMeta.controller.js");
+const productTag = require("./controllers/productTag.controller.js");
+const tag = require("./controllers/tag.controller.js");
+const transaction = require("./controllers/transaction.controller.js");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -155,4 +160,84 @@ app.put("/product-category/:id", async (req, res) => {
 
 app.delete("/product-category/:id", async (req, res) => {
     await productCategory.delete(req, res);
+});
+
+app.post("/product-meta", async (req, res) => {
+    await productMeta.create(req, res);
+});
+
+app.get("/product-meta/:id", async (req, res) => {
+    await productMeta.find(req, res);
+});
+
+app.put("/product-meta/:id", async (req, res) => {
+    await productMeta.edit(req, res);
+});
+
+app.delete("/product-meta/:id", async (req, res) => {
+    await productMeta.delete(req, res);
+});
+
+app.post("/product-review", async (req, res) => {
+    await productReview.create(req, res);
+});
+
+app.get("/product-review/:id", async (req, res) => {
+    await productReview.find(req, res);
+});
+
+app.put("/product-review/:id", async (req, res) => {
+    await productReview.edit(req, res);
+});
+
+app.delete("/product-review/:id", async (req, res) => {
+    await productReview.delete(req, res);
+});
+
+app.post("/product-tag", async (req, res) => {
+    await productTag.create(req, res);
+});
+
+app.get("/product-tag/:id", async (req, res) => {
+    await productTag.find(req, res);
+});
+
+app.put("/product-tag/:id", async (req, res) => {
+    await productTag.edit(req, res);
+});
+
+app.delete("/product-tag/:id", async (req, res) => {
+    await productTag.delete(req, res);
+});
+
+app.post("/tag", async (req, res) => {
+    await tag.create(req, res);
+});
+
+app.get("/tag/:id", async (req, res) => {
+    await tag.find(req, res);
+});
+
+app.put("/tag/:id", async (req, res) => {
+    await tag.edit(req, res);
+});
+
+app.delete("/tag/:id", async (req, res) => {
+    await tag.delete(req, res);
+});
+
+app.post("/transaction", async (req, res) => {
+    await transaction.create(req, res);
+});
+
+app.get("/transaction/:id", async (req, res) => {
+    await transaction.find(req, res);
+});
+
+app.put("/transaction/:id", async (req, res) => {
+    await transaction.edit(req, res);
+});
+
+app.delete("/transaction/:id", async (req, res) => {
+    await transaction.delete(req, res);
 });
