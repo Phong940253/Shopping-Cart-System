@@ -7,6 +7,7 @@ const app = express();
 const db = require("./models/index");
 const user = require("./controllers/user.controller.js");
 const cart = require("./controllers/cart.controller.js");
+const order = require("./controllers/order.controller.js");
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -57,46 +58,19 @@ app.delete("/user/:id", async (req, res) => {
 });
 
 app.post("/order", async (req, res) => {
-    try {
-        let order = new db.orderModel(req.body);
-        let result = await order.save();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await order.create(req, res);
 });
 
 app.get("/order/:id", async (req, res) => {
-    try {
-        let order = await db.orderModel.findById(req.params.id).exec();
-        res.send(order);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await order.find(req, res);
 });
 
 app.put("/order/:id", async (req, res) => {
-    try {
-        let order = await db.orderModel.findById(req.params.id).exec();
-        order.set(req.body);
-        let result = await order.save();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await order.edit(req, res);
 });
 
 app.delete("/order/:id", async (req, res) => {
-    try {
-        let result = await db.orderModel
-            .deleteOne({
-                _id: req.params.id,
-            })
-            .exec();
-        res.send(result);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    await order.delete(req, res);
 });
 
 app.post("/cart", async (req, res) => {
