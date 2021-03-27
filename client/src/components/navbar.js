@@ -1,30 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-//import("../css/materialize.min.css");
+import("../css/banner.css");
 const Navbar = () => {
     return (
         <Router>
-            <nav className="nav-wrapper">
+            <div className="header">
                 <div className="container">
-                    <Link to="/" className="brand-logo">
-                        Shopping
-                    </Link>
-
-                    <ul className="right">
-                        <li>
-                            <Link to="/">Shop</Link>
-                        </li>
-                        <li>
-                            <Link to="/cart">My cart</Link>
-                        </li>
-                        <li>
-                            <Link to="/cart">
-                                <i className="material-icons">shopping_cart</i>
-                            </Link>
-                        </li>
-                    </ul>
+                    <div className="middle_wrap">
+                        <div className="middle_left_container">
+                            <div className="logo_menu">
+                                <div className="style_logo">
+                                    <Link className="no-underline">
+                                        <b className="logo no-underline">
+                                            SHOPPING
+                                        </b>
+                                    </Link>
+                                </div>
+                                <div></div>
+                            </div>
+                            <div className="form_search"></div>
+                        </div>
+                        <div className="header_user"></div>
+                    </div>
                 </div>
-            </nav>
+                <div className="bottom_root"></div>
+            </div>
         </Router>
     );
 };
