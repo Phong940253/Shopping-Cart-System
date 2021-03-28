@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import MenuButton from "./MenuButton";
 import("../css/banner.css");
 const Navbar = () => {
     return (
@@ -10,13 +11,13 @@ const Navbar = () => {
                         <div className="middle_left_container">
                             <div className="logo_menu">
                                 <div className="style_logo">
-                                    <Link className="no-underline">
+                                    <Link className="logo no-underline">
                                         <b className="logo no-underline">
-                                            SHOPPING
+                                            SHOP
                                         </b>
                                     </Link>
                                 </div>
-                                <div></div>
+                                <MenuButton></MenuButton>
                             </div>
                             <div className="form_search"></div>
                         </div>

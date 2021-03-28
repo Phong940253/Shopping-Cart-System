@@ -1,5 +1,7 @@
-body {
-    margin: 0px;
+
+
+a {
+    text-decoration: none;
 }
 
 .header {
@@ -8,10 +10,14 @@ body {
     z-index: 999;
 }
 
+.header * {
+    letter-spacing: normal;
+}
+
 .container {
     width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 4%;
+    padding-right: 4%;
     margin-right: auto;
     margin-left: auto;
     
@@ -75,16 +81,7 @@ body {
     text-decoration: none;
 }
 
-img {
-    max-width: 100%;
-    border-style: none;
-}
 
-*,
-::before,
-::after {
-    box-sizing: border-box;
-}
 
 .noselect {
     -webkit-touch-callout: none;
