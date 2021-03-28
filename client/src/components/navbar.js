@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MenuButton from "./MenuButton";
 import FormSearch from "./FormSearch";
-import("../css/banner.css");
+import HeaderUser from "./HeaderUser";
+
 class Navbar extends Component {
     render() {
         return (
@@ -23,7 +24,7 @@ class Navbar extends Component {
                                 </div>
                                 <FormSearch></FormSearch>
                             </div>
-                            <div className="header_user"></div>
+                            <HeaderUser></HeaderUser>
                         </div>
                     </div>
                     <div className="bottom_root"></div>

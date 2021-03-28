@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import search from "../img/search.png";
-import("../css/FormSearch.css");
 class FormSearch extends Component {
     render() {
         return (

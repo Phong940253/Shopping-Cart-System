@@ -1,0 +1,39 @@
+.user-style-item-text {
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.user-style-no-wrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden;
+    text-transform: capitalize;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.user-style-item-text .account-label {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 13px;
+    line-height: 20px;
+    min-width: 120px;
+}
+
+.user-style-item-text .account-label span {
+    max-width: 104px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import hamburger from "../img/hamburger-menu.png";
 import arow from "../img/arow.png";
-import("../css/MenuButton.css");
 class MenuButton extends Component {
     render() {
         return (

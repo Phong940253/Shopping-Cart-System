@@ -45,13 +45,6 @@ a {
     align-items: center;
 }
 
-.header_user {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-}
 
 .logo_menu {
     display: flex;
