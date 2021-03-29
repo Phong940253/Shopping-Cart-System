@@ -4,6 +4,7 @@ import "./css/FormSearch.css";
 import "./css/MenuButton.css";
 import "./css/HeaderUser.css";
 import "./css/User.css";
+import "./css/ShortcutCart.css";
 // import Login from "./components/Login";
 // import Signup from "./components/Signup";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";

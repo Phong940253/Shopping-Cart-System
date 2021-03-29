@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import profile from "../img/profile.png";
-import User from "./User";
+import UserShortcut from "./ShortcutUser";
+import ShortcutCart from "./ShortcutCart";
 
 class HeaderUser extends Component {
     render() {
@@ -10,9 +11,9 @@ class HeaderUser extends Component {
                 <div className="header-user">
                     <div className="header-account-container">
                         <img className="profile-icon" src={profile} />
-                        <User></User>
+                        <UserShortcut></UserShortcut>
                     </div>
-                    <div className="header-user-shortcut-cart"></div>
+                    <ShortcutCart></ShortcutCart>
                 </div>
             </Router>
         );

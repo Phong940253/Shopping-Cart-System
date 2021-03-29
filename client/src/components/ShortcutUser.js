@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ArrawIcon from "../img/arow.png";
 
-class User extends Component {
+class UserShortcut extends Component {
     render() {
         return (
             <Router>
@@ -24,9 +24,9 @@ class User extends Component {
     }
 }
 
-User.defaultProps = {
+UserShortcut.defaultProps = {
     name: "",
     isLogin: false,
 };
 
-export default User;
+export default UserShortcut;
